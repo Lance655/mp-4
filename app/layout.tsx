@@ -1,14 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
-import styled from "styled-components";
 import "./globals.css";
-import { Button,
-    FormHelperText,
-    TextField,
-    Container,
+import {
     Box,
-    Paper,
 } from "@mui/material";
 
 export const metadata: Metadata = {

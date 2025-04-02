@@ -1,12 +1,8 @@
 import getGameInfo from "@/lib/getGameInfo";
-import { Button,
-    FormHelperText,
-    TextField,
-    Container,
+import {
     Box,
     Paper,
 } from "@mui/material";
-import styled from "styled-components";
 
 interface Props {
     params: {
