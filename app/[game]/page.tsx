@@ -3,6 +3,7 @@ import {
     Box,
     Paper,
 } from "@mui/material";
+import {IGDBGame} from "@/types";
 
 interface Props {
     params: {
@@ -15,7 +16,7 @@ export default async function GameSearchPage({ params }: Props) {
 
     const gameName = decodeURIComponent(params.game);
 
-    let results = [];
+    let results:IGDBGame[] = [];
     try {
         results = await getGameInfo(gameName);
     } catch (err: any) {
@@ -23,10 +24,7 @@ export default async function GameSearchPage({ params }: Props) {
     }
 
     return (
-        <main style={{
-            // padding: "1rem",
-            // height: "100vh",
-        }}>
+        <main>
             <Box sx={{
                 padding: "1rem",
                 margin: "auto",
