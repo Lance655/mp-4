@@ -6,17 +6,14 @@ import {
 import {IGDBGame} from "@/types";
 import {Platform} from "@/types";
 
-interface Props {
-    params: {
-        game: string;
-    };
-}
+// interface Props {
+//     params: {
+//         game: string;
+//     };
+// }
 
 
-export default async function GameSearchPage({ params }: Props) {
-
-    // const { game } = await params
-    // const gameName = await decodeURIComponent(params.game);
+export default async function GameSearchPage({ params }: {params: { game: string }} ) {
 
     const gameName = decodeURIComponent(params.game);
 
