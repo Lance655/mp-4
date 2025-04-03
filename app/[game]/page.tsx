@@ -15,10 +15,10 @@ interface Props {
 
 export default async function GameSearchPage({ params }: Props) {
 
-    const { game } = await params
+    // const { game } = await params
     // const gameName = await decodeURIComponent(params.game);
 
-    const gameName = decodeURIComponent(game);
+    const gameName = decodeURIComponent(params.game);
 
     let results:IGDBGame[] = [];
     try {
