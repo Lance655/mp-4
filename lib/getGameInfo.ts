@@ -14,7 +14,7 @@ export default async function getGameInfo(gameName: string): Promise<IGDBGame[]>
     // Prepare the body
     const body = `
     search "${gameName}";
-    fields name, summary, release_dates.date, platforms.name, cover.url; 
+    fields name, summary, platforms.name, cover.url; 
     limit 5;
   `;
 

@@ -4,6 +4,7 @@ import {
     Paper,
 } from "@mui/material";
 import {IGDBGame} from "@/types";
+import {Platform} from "@/types";
 
 interface Props {
     params: {
@@ -14,7 +15,10 @@ interface Props {
 
 export default async function GameSearchPage({ params }: Props) {
 
-    const gameName = decodeURIComponent(params.game);
+    const { game } = await params
+    // const gameName = await decodeURIComponent(params.game);
+
+    const gameName = decodeURIComponent(game);
 
     let results:IGDBGame[] = [];
     try {
@@ -44,7 +48,7 @@ export default async function GameSearchPage({ params }: Props) {
                 {results.length === 0 ? (
                     <p>No results found.</p>
                 ) : (
-                    results.map((game: any) => (
+                    results.map((game: IGDBGame) => (
                         <Paper key={game.id} variant="outlined"
                             sx={{
                             display: "flex",
@@ -77,11 +81,11 @@ export default async function GameSearchPage({ params }: Props) {
                                 }}>
                                     Platforms:
                                     {game.platforms?.length
-                                        ? game.platforms.map((p: any) => p.name).join(", ")
+                                        ? game.platforms.map((p: Platform) => p.name).join(", ")
                                         : null }
                                 </Box>
                             </Box>
-                            {game.cover ? (
+                            {game.cover && game.cover.url ? (
                                 <img
                                     src={`https:${game.cover.url.replace("t_thumb", "t_cover_big")}`}
                                     alt="Game Cover"
