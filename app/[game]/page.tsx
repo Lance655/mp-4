@@ -23,8 +23,12 @@ export default async function GameSearchPage({ params }: Props) {
     let results:IGDBGame[] = [];
     try {
         results = await getGameInfo(gameName);
-    } catch (err: any) {
-        return <p>Error: {err.message}</p>;
+    } catch (err: unknown) {
+        if (err instanceof Error) {
+            return <p>Error: {err.message}</p>;
+        }
+        // fallback if it's not an `Error`
+        return <p>An unknown error occurred.</p>;
     }
 
     return (
