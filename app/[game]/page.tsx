@@ -13,9 +13,9 @@ import {Platform} from "@/types";
 // }
 
 
-export default async function GameSearchPage({ params }: {params: { game: string }} ) {
-
-    const gameName = decodeURIComponent(params.game);
+export default async function GameSearchPage({params}: {params: Promise<{ game: string }>} ) {
+    const { game } = await params;
+    const gameName = decodeURIComponent(game);
 
     let results:IGDBGame[] = [];
     try {
